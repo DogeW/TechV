@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "../inc/defines.v"
 
 module if_id (
         input   wire    rst,

@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "../inc/defines.v"
 
 module id_ex (
         input   wire    clk,

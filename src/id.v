@@ -1,7 +1,7 @@
-`include "defines.v"
+`include "../inc/defines.v"
 
 module id (
-        input   wire    rst,
+        input   wire                    rst,
         input   wire[`InstAddrBus]      pc_i,
         input   wire[`InstBus]          inst_i,
 
@@ -52,7 +52,7 @@ always @(*)begin
                 reg2_read_o = `ReadDisable;
                 reg1_addr_o = inst_i[25:21];
                 reg2_addr_o = inst_i[20:16];
-                imm <= `ZeroWord;
+                imm = `ZeroWord;
 
                 case(op)
                         `EXE_ORI: begin
@@ -94,6 +94,5 @@ always @(*) begin
                 reg2_o = `ZeroWord;
         end
 end
-
 
 endmodule

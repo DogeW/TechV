@@ -1,0 +1,5 @@
+# .gitignore
+work/
+*.mti
+vsim.dbg
+vsim.wlf
