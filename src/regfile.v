@@ -36,6 +36,9 @@ always @(*) begin
         end else if(raddr1 == `RegNumLog2'h0) begin
                 rdata1 = `ZeroWord;
         end else if( (raddr1 == waddr) && (we == `WriteEnable) && (re1 == `ReadEnable) ) begin
+                // The 4th instruction want to read data from register x in decode stage,
+                // but the data will write to the register in writeback stage(the next clk rising) by the first instruction.
+                // So, we direct copy the write data to read data.
                 rdata1 = wdata;
         end else if(re1 == `ReadEnable) begin
                 rdata1 = regs[raddr1];
@@ -51,6 +54,7 @@ always @(*) begin
         end else if(raddr2 == `RegNumLog2'h0) begin
                 rdata2 = `ZeroWord;
         end else if( (raddr2 == waddr) && (we == `WriteEnable) && (re2 == `ReadEnable) ) begin
+                // Same with 'read register 1'
                 rdata2 = wdata;
         end else if(re2 == `ReadEnable) begin
                 rdata2 = regs[raddr2];
