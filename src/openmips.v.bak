@@ -20,7 +20,7 @@ wire[`AluSelBus]        id_alusel_o;
 wire[`RegBus]           id_reg1_o;
 wire[`RegBus]           id_reg2_o;
 wire                    id_wreg_o;
-wire[`RegAddrBus]       id_waddr_o;
+wire[`RegAddrBus]       id_wd_o;
 
 // Connect to id_ex module
 wire[`AluOpBus]         ex_aluop_i;
@@ -94,7 +94,7 @@ id id0(
     .alusel_o(id_alusel_o),
     .reg1_o(id_reg1_o),
     .reg2_o(id_reg2_o),
-    .waddr_o(id_waddr_o),
+    .wd_o(id_wd_o),
     .wreg_o(id_wreg_o),
 
     .ex_wreg_i(ex_wreg_o),
@@ -131,7 +131,7 @@ id_ex id_ex0(
     .id_alusel(id_alusel_o),
     .id_reg1(id_reg1_o),
     .id_reg2(id_reg2_o),
-    .id_wd(id_waddr_o),
+    .id_wd(id_wd_o),
     .id_wreg(id_wreg_o),
 
     .ex_aluop(ex_aluop_i),
